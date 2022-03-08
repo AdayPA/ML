@@ -9,8 +9,9 @@
 #include "perceptron.hpp"
 
 Neuron::Neuron(int input_size, float input_threshold) {
+  bias_ = 0.0;
   sigma_ = 0.0;
-  error_ = false;
+  error_arguments_ = false;
   size_ = input_size;
   input_.resize(input_size);
   weight_.resize(input_size);
@@ -18,40 +19,53 @@ Neuron::Neuron(int input_size, float input_threshold) {
   SetRandom();
 }
 
-Neuron::Neuron(int input_size, float input_threshold, std::vector<float> input_weight) {
-  sigma_ = 0.0;
-  size_ = input_size;
-  input_.resize(input_size);
-  weight_.resize(input_size);
-  threshold_ = input_threshold;
-  if (input_size == input_weight.size()) {
-    weight_ = input_weight;
-  } else {
-    printf("Input weight does not match with the input size.");
-    error_ = true;
-  }
-}
-
 Neuron::~Neuron() {
 
 }
 
-void Neuron::SetInput(std::vector<bool> input) {
-  if (input.size() == input_.size() && !error_) {
+void Neuron::SetInput(std::vector<float> input) {
+  if (input.size() == input_.size() && !error_arguments_) {
     for (int i = 0; i < size_; i++) {
       input_[i] = input[i];
     }
   } else {
     printf("Input values does not match with the input size.");
-    error_ = true;
+    error_arguments_ = true;
   }
 }
 
-float Neuron::SumUnit(void) {
-  if (!error_) {
+float Neuron::CalcSigma(void) {
+  if (!error_arguments_) {
     for (int i = 0; i < size_; i++) {
       sigma_ += input_[i] * weight_[i];
     }
+  }
+  sigma_ += bias_;
+}
+
+float Neuron::GetSigma(void) {
+  return sigma_;
+}
+
+bool Neuron::ActivationFunc (void){
+  if (sigma_ > threshold_) {
+    activation_ = 1;
+  } else {
+    activation_ = 0;
+  };
+}
+
+void Neuron::CalcError (void) {
+  error_ = desired_output_ - activation_;
+}
+
+void Neuron::CalcCorrection (void) {
+  correction_ = learning_rate_ * error_;
+}
+
+void Neuron::UpdateWeight(void) {
+  for (int i = 0; i < size_; i++) {
+    weight_[i] +=  (input_[i] * correction_);
   }
 }
 
@@ -63,7 +77,7 @@ void Neuron::PrintValues(void) {
 }
 
 void Neuron::SetRandom(void) {
-  if (!error_) {
+  if (!error_arguments_) {
     std::mt19937_64 rng;
     // initialize the random number generator with time-dependent seed
     uint64_t timeSeed = std::chrono::high_resolution_clock::now().time_since_epoch().count();

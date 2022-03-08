@@ -6,23 +6,36 @@
 class Neuron {
 
   public:
-  Neuron(int, float);
-  Neuron(int, float, std::vector<float>);
-  ~Neuron();
 
-  void SetInput(std::vector<bool> );
-  float SumUnit (void);
+  Neuron (int, float);
+  ~Neuron ();
+
+  float GetSigma (void);
+  void SetInput (std::vector<float>);
   void PrintValues (void);
 
-  private:
-  bool error_;
-  int size_;
-  std::vector<bool> input_;
-  std::vector<float> weight_;
-  float threshold_;
-  float sigma_;
 
-  void SetRandom (void);
+  private:
+
+    float threshold_;
+    float sigma_;
+    float bias_;
+    float error_;
+    float correction_;
+    float learning_rate_;
+    float desired_output_;
+    bool error_arguments_;
+    int activation_;
+    int size_;
+    std::vector<float> input_;
+    std::vector<float> weight_;
+
+    float CalcSigma (void);
+    bool ActivationFunc (void);
+    void CalcError (void);
+    void CalcCorrection (void);
+    void SetRandom (void);
+    void UpdateWeight (void);
 
 };
 
