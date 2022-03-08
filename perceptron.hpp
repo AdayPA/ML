@@ -4,10 +4,17 @@
 #include <vector>
 
 class Neuron {
-  std::vector<bool> input;
-  std::vector<float> weight;
-  
-
+  public:
+  Neuron(int, float);
+  Neuron(int, float, std::vector<float>);
+  ~Neuron();
+  int size_;
+  std::vector<bool> input_;
+  std::vector<float> weight_;
+  float threshold_;
+  float sigma_;
+  float SumUnit (void);
+  void SetRandom (void);
 };
 
 #endif

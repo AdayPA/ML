@@ -1,7 +1,10 @@
 #include "perceptron.cpp"
-#include <iostream>
+
 
 int main (void) {
-  printf("asd");
+  
+  Neuron A(2,2.0);
+
+
   return 0;
 }
