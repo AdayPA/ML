@@ -2,7 +2,7 @@
 
 
 int main (void) {
-  std::vector<bool> input;
+  std::vector<float> input;
   input.assign({1, 0, 1, 0, 1});
 
   Neuron A(5,1.5);
