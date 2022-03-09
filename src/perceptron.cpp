@@ -43,10 +43,6 @@ float Neuron::CalcSigma(void) {
   sigma_ += bias_;
 }
 
-float Neuron::GetSigma(void) {
-  return sigma_;
-}
-
 bool Neuron::ActivationFunc (void){
   if (sigma_ > threshold_) {
     activation_ = 1;

@@ -1,16 +1,11 @@
 #include "perceptron.cpp"
+#include "dataset.cpp"
 
+#include <fstream>
 
 int main (void) {
-  std::vector<float> input;
-  input.assign({1, 0, 1, 0, 1});
-
-  Neuron A(5,1.5);
-  A.SetInput(input);
-  A.PrintValues();
-
-
-
+  std::string asd;
+  Dataset test("../dataset/nand",asd);
 
 
 

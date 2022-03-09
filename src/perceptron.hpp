@@ -10,7 +10,7 @@ class Neuron {
   Neuron (int, float);
   ~Neuron ();
 
-  float GetSigma (void);
+  inline float GetSigma (void) { return sigma_; }
   void SetInput (std::vector<float>);
   void PrintValues (void);
 

@@ -12,8 +12,20 @@ const std::string kFileExt = ".txt";
 Dataset::Dataset() {}
 
 Dataset::Dataset(std::string input, std::string output) {
+  std::string line;
+  std::ifstream myfile;
+  myfile.open(input);
 
+  if (!myfile.is_open()) {
+    perror("Error open");
+    exit(EXIT_FAILURE);
+  } while (getline(myfile, line)) {
+    std::cout << line << std::endl;
+  }
 }
+
+{{{0,1,1},1}, {{0,0,0},0}}
+
 
 Dataset::~Dataset() {}
 
