@@ -22,9 +22,26 @@ Dataset::Dataset(std::string input, std::string output) {
   } while (getline(myfile, line)) {
     std::cout << line << std::endl;
   }
-}
 
-{{{0,1,1},1}, {{0,0,0},0}}
+  std::vector<std::string> parse;
+  std::cout << "line: "<< line << std::endl;
+  parse = Split(line,"-");
+  std::cout << parse[0];
+  std::cout << parse[1] << std::endl;
+  std::vector<std::string> parse2;
+  parse2 = Split(parse[0], " ");
+  std::cout << "tam parse2: " << parse2.size() << std::endl;
+  std::cout << parse2[0];
+  std::cout << parse2[1];
+  std::cout << parse2[2];
+  std::vector<float> trainvect;
+  trainvect.push_back(std::stof(parse2[0]));
+  trainvect.push_back(std::stof(parse2[1]));
+  trainvect.push_back(std::stof(parse2[2]));
+
+  
+
+}
 
 
 Dataset::~Dataset() {}
@@ -49,6 +66,22 @@ int Dataset::Count_lines(const std::string file) {
     ++lines;
   }
   return lines;
+}
+
+std::vector<std::string> Dataset::Split (std::string str, std::string delim) {
+  /// @brief this func split in 2 the string and store them in vector, 
+  //         depending of the char
+  std::vector<std::string> tokens;
+  size_t prev = 0, pos = 0;
+  do {
+    pos = str.find(delim, prev);
+    if (pos == std::string::npos) pos = str.length();
+    std::string token = str.substr(prev, pos-prev);
+    if (!token.empty()) tokens.push_back(token);
+    prev = pos + delim.length();
+  }
+  while (pos < str.length() && prev < str.length());
+  return tokens;
 }
 
 #endif

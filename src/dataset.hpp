@@ -18,6 +18,7 @@ class Dataset {
     inline const std::string& Get_outputFile (void)  { return outputFile_; };
     std::string Get_line (const std::string&, const int&);
     int Count_lines (const std::string);
+    std::vector<std::string> Split (std::string, std::string);
     // permissions
     // size for file
     // error type
