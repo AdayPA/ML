@@ -5,10 +5,11 @@
 #include <fstream>
 
 int main (void) {
-  Neuron neuron(1,1.0);
+  Neuron neuron(3,0.5);
   Dataset dataset("../dataset/nand");
   Tensor tensor = dataset.GetTensor();
   ANN network(neuron,tensor);
-  network.TrainANN(3);
+  network.TrainANN(20);
+
   return 0;
 }

@@ -13,6 +13,8 @@ Neuron::Neuron(){}
 Neuron::Neuron(int input_size, float input_threshold) {
   bias_ = 0.0;
   sigma_ = 0.0;
+  error_ = 0.0;
+  learning_rate_ = 0.1;
   error_arguments_ = false;
   size_ = input_size;
   input_.resize(input_size);
@@ -41,42 +43,56 @@ void Neuron::SetOutput(float output) {
 }
 
 
-float Neuron::CalcSigma(void) {
+void Neuron::CalcSigma(void) {
   if (!error_arguments_) {
+    float temp = 0.0;
     for (int i = 0; i < size_; i++) {
-      sigma_ += input_[i] * weight_[i];
+      temp += input_[i] * weight_[i];
     }
+    sigma_ = temp;
   }
-  sigma_ += bias_;
+  printf("\nSigma: %f", sigma_);
+  //sigma_ += bias_;
 }
 
-bool Neuron::ActivationFunc (void){
+void Neuron::ActivationFunc (void){
   if (sigma_ > threshold_) {
     activation_ = 1;
   } else {
     activation_ = 0;
   };
+  printf("\nActivation: %i", activation_);
 }
 
 void Neuron::CalcError (void) {
+  printf("\nCalculo error: %f - %f",desired_output_, activation_);
   error_ = desired_output_ - activation_;
+  printf(" =  %f", error_);
 }
 
 void Neuron::CalcCorrection (void) {
   correction_ = learning_rate_ * error_;
+  printf("\nCorreccion =  %f", correction_);
 }
 
 void Neuron::UpdateWeight(void) {
   for (int i = 0; i < size_; i++) {
     weight_[i] +=  (input_[i] * correction_);
   }
+   for (int i = 0; i < size_; i++) {
+    std::cout << "\nPesos: " << weight_[i] << "";
+  }
 }
 
 void Neuron::PrintValues(void) {
   for (int i = 0; i < size_; i++) {
-    std::cout << input_[i] << " " << weight_[i] << "\n";
+    std::cout << "Pesos: " << weight_[i] << "\n";
   }
-  printf("Total: %f", sigma_);
+  printf("Sigma: %f\n", sigma_);
+  printf("Desired output: %i\n", desired_output_);
+  printf("ActivationFunc: %i\n", activation_);
+  printf("CalcError: %f\n", error_);
+  printf("CalcCorrection: %f\n", correction_);
 }
 
 void Neuron::SetRandom(void) {
@@ -93,10 +109,18 @@ void Neuron::SetRandom(void) {
     for (int i = 0; i < size_; i++)
     {
       float currentRandomNumber = unif(rng);
-      weight_[i] = currentRandomNumber;
+      //weight_[i] = currentRandomNumber;
+      weight_[i] = 0;
     }
   }
 }
 
+void Neuron::Train(void) {
+  CalcSigma();
+  ActivationFunc();
+  CalcError();    
+  CalcCorrection();
+  UpdateWeight();
+}
 
 #endif

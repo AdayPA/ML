@@ -15,7 +15,7 @@ class Neuron {
     void SetInput (std::vector<float>);
     void SetOutput (float);
     void PrintValues (void);
-    void Train(std::vector<float>,float);
+    void Train(void);
 
 
   private:
@@ -33,8 +33,8 @@ class Neuron {
     std::vector<float> input_;
     std::vector<float> weight_;
 
-    float CalcSigma (void);
-    bool ActivationFunc (void);
+    void ActivationFunc (void);
+    void CalcSigma (void);
     void CalcError (void);
     void CalcCorrection (void);
     void SetRandom (void);
