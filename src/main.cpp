@@ -9,7 +9,7 @@ int main (void) {
   Dataset dataset("../dataset/nand");
   Tensor tensor = dataset.GetTensor();
   ANN network(neuron,tensor);
-  network.TrainANN(20);
+  network.TrainANN(9);
 
   return 0;
 }
