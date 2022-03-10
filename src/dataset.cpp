@@ -1,5 +1,5 @@
-#ifndef DATASET_HPP_
-#define DATASET_HPP_
+#ifndef DATASET_CPP_
+#define DATASET_CPP_
 
 #include "dataset.hpp"
 
@@ -33,9 +33,6 @@ Dataset::Dataset(std::string input) {
     }
     tensor_.input_.push_back(temp);
   }
-
-  std::cout << tensor_.input_[1][1];
-
 }
 
 

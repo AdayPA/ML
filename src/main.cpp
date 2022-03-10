@@ -1,5 +1,6 @@
 #include "perceptron.cpp"
 #include "dataset.cpp"
+#include "neuralnetwork.cpp"
 
 #include <fstream>
 

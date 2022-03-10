@@ -7,14 +7,14 @@ class Neuron {
 
   public:
 
-  Neuron (int, float);
-  ~Neuron ();
+    Neuron (int, float);
+    ~Neuron ();
 
-  inline float GetSigma (void) { return sigma_; }
-  void SetInput (std::vector<float>);
-  void SetOutput (float);
-  void PrintValues (void);
-  void Train(std::vector<float>,float);
+    inline float GetSigma (void) { return sigma_; }
+    void SetInput (std::vector<float>);
+    void SetOutput (float);
+    void PrintValues (void);
+    void Train(std::vector<float>,float);
 
 
   private:
