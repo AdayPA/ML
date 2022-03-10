@@ -4,8 +4,8 @@
 #include <fstream>
 
 int main (void) {
-  std::string asd = "";
-  Dataset test("../dataset/nand",asd);
+  Neuron neuron(1,1.0);
+  Dataset dataset("../dataset/nand");
 
 
   return 0;

@@ -34,6 +34,11 @@ void Neuron::SetInput(std::vector<float> input) {
   }
 }
 
+void Neuron::SetOutput(float output) {
+  desired_output_ = output;
+}
+
+
 float Neuron::CalcSigma(void) {
   if (!error_arguments_) {
     for (int i = 0; i < size_; i++) {

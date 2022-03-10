@@ -12,6 +12,7 @@ class Neuron {
 
   inline float GetSigma (void) { return sigma_; }
   void SetInput (std::vector<float>);
+  void SetOutput (float);
   void PrintValues (void);
   void Train(std::vector<float>,float);
 

@@ -7,11 +7,12 @@
 #include <iostream>
 #include <algorithm>
 
-const std::string kFileExt = ".txt";
+const std::string kDelimiter = "-";
+const std::string kSpace = " ";
 
 Dataset::Dataset() {}
 
-Dataset::Dataset(std::string input, std::string output) {
+Dataset::Dataset(std::string input) {
   std::string line;
   std::ifstream myfile;
   myfile.open(input);
@@ -19,27 +20,21 @@ Dataset::Dataset(std::string input, std::string output) {
   if (!myfile.is_open()) {
     perror("Error open");
     exit(EXIT_FAILURE);
-  } while (getline(myfile, line)) {
-    std::cout << line << std::endl;
+  }
+  while (getline(myfile, line)) {
+    std::vector<std::string> parse;
+    parse = Split(line, kDelimiter);
+    tensor_.output_.push_back(std::stof(parse[1]));
+    std::vector<std::string> parse_tensor;
+    parse_tensor = Split(parse[0], kSpace);
+    std::vector<float> temp;
+    for (int i = 0; i < parse_tensor.size(); i++) {
+      temp.push_back(std::stof(parse_tensor[i]));
+    }
+    tensor_.input_.push_back(temp);
   }
 
-  std::vector<std::string> parse;
-  std::cout << "line: "<< line << std::endl;
-  parse = Split(line,"-");
-  std::cout << parse[0];
-  std::cout << parse[1] << std::endl;
-  std::vector<std::string> parse2;
-  parse2 = Split(parse[0], " ");
-  std::cout << "tam parse2: " << parse2.size() << std::endl;
-  std::cout << parse2[0];
-  std::cout << parse2[1];
-  std::cout << parse2[2];
-  std::vector<float> trainvect;
-  trainvect.push_back(std::stof(parse2[0]));
-  trainvect.push_back(std::stof(parse2[1]));
-  trainvect.push_back(std::stof(parse2[2]));
-
-  
+  std::cout << tensor_.input_[1][1];
 
 }
 
