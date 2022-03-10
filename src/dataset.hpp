@@ -1,12 +1,10 @@
 #ifndef DATASET_HPP_
 #define DATASET_HPP_
 
+#include "tensor.hpp"
+
 #include <string>
 
-struct Tensor {
-  std::vector<std::vector<float>> input_;
-  std::vector<float> output_;
-};
 
 class Dataset {
   public:

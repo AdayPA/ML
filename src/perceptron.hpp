@@ -7,6 +7,7 @@ class Neuron {
 
   public:
 
+    Neuron();
     Neuron (int, float);
     ~Neuron ();
 

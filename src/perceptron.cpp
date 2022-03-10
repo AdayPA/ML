@@ -8,6 +8,8 @@
 
 #include "perceptron.hpp"
 
+Neuron::Neuron(){}
+
 Neuron::Neuron(int input_size, float input_threshold) {
   bias_ = 0.0;
   sigma_ = 0.0;
