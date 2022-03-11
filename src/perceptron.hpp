@@ -11,11 +11,12 @@ class Neuron {
     Neuron (int, float);
     ~Neuron ();
 
-    inline float GetSigma (void) { return sigma_; }
+    //inline float GetSigma (void) { return sigma_; }
     void SetInput (std::vector<float>);
     void SetOutput (float);
     void PrintValues (void);
     void Train(void);
+    int Test(void);
 
 
   private:

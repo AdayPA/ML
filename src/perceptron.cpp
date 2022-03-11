@@ -123,4 +123,10 @@ void Neuron::Train(void) {
   UpdateWeight();
 }
 
+int Neuron::Test(void) {
+  CalcSigma();
+  ActivationFunc();
+  return activation_;
+}
+
 #endif

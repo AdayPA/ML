@@ -27,4 +27,15 @@ void ANN::TrainANN(int batch) {
 
 }
 
+void ANN::Test(std::vector<float> input) {
+  neuron_.SetInput(input);
+  int temp = neuron_.Test();
+  std::cout << "\nsalida del test: " << temp ;
+}
+
+
+void ANN::Plot(void) {
+  
+}
+
 #endif

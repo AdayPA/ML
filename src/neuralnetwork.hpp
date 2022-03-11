@@ -11,11 +11,14 @@ class ANN {
     ANN(Neuron, Tensor);
     ~ANN();
     void TrainANN(int);
+    void Test(std::vector<float>);
 
   private:
 
     Neuron neuron_;
     Tensor tensor_;
+
+    void Plot(void);
 
 };
 
