@@ -9,6 +9,10 @@ ANN::ANN(Neuron neuron, Tensor tensor) {
   tensor_ = tensor;
 }
 
+ANN::ANN(int input, float threshold, std::vector<int> network, Tensor tensor) {
+  
+}
+
 
 ANN::~ANN() {}
 

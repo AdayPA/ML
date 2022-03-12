@@ -9,6 +9,7 @@ class ANN {
   public:
 
     ANN(Neuron, Tensor);
+    ANN(int, float, std::vector<int>, Tensor); //Nº of inputs, threshold, layers
     ~ANN();
     void TrainANN(int);
     void Test(std::vector<float>);
