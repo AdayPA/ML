@@ -18,7 +18,7 @@ class Neuron {
     void TrainNeuron(void);
     void Train(void);
     int Test(void);
-    inline int GetSize(void) { return size_;};
+    inline float GetSigma(void) { return sigma_;};
 
   private:
 

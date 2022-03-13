@@ -31,11 +31,23 @@ ANN::ANN(int input, float threshold, std::vector<int> network, Tensor tensor) {
 ANN::~ANN() {}
 
 void ANN::TrainANN(int batch) {
+  std::vector<float> temp_results;
+  std::vector<float> temp_next_results;
   for (int i = 0; i < network_.at(0).size(); i++) {
     network_.at(0).at(i)->SetInput(tensor_.input_[i]);
-    network_.at(0).at(i)->SetOutput(tensor_.output_[i]);
     network_.at(0).at(i)->Train();
+    temp_results.push_back(network_.at(0).at(i)->GetSigma());
   }
+  for (int i = 1; i < network_.size(); i++) {
+    for (int j = 0; j < network_.at(i).size(); j++) {
+      network_.at(i).at(j)->SetInput(temp_results);
+      network_.at(i).at(j)->Train();
+      temp_next_results.push_back(network_.at(i).at(j)->GetSigma());
+    }
+    temp_results = temp_next_results;
+    temp_next_results.clear();
+  }
+  
 }
 
 void ANN::TrainNeuron(int batch) {

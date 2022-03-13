@@ -61,18 +61,18 @@ void Neuron::ActivationFunc (void){
   } else {
     activation_ = 0;
   };
-  printf("\nActivation: %i", activation_);
+  //printf("\nActivation: %i", activation_);
 }
 
 void Neuron::CalcError (void) {
-  printf("\nCalculo error: %f - %f",desired_output_, activation_);
+  //printf("\nCalculo error: %f - %f",desired_output_, activation_);
   error_ = desired_output_ - activation_;
-  printf(" =  %f", error_);
+  //printf(" =  %f", error_);
 }
 
 void Neuron::CalcCorrection (void) {
   correction_ = learning_rate_ * error_;
-  printf("\nCorreccion =  %f", correction_);
+  //printf("\nCorreccion =  %f", correction_);
 }
 
 void Neuron::UpdateWeight(void) {
@@ -80,7 +80,7 @@ void Neuron::UpdateWeight(void) {
     weight_[i] +=  (input_[i] * correction_);
   }
    for (int i = 0; i < size_; i++) {
-    std::cout << "\nPesos: " << weight_[i] << "";
+    //std::cout << "\nPesos: " << weight_[i] << "";
   }
 }
 
@@ -109,8 +109,8 @@ void Neuron::SetRandom(void) {
     for (int i = 0; i < size_; i++)
     {
       float currentRandomNumber = unif(rng);
-      weight_[i] = currentRandomNumber;
-      //weight_[i] = 0;
+      //weight_[i] = currentRandomNumber;
+      weight_[i] = 1;
     }
   }
 }

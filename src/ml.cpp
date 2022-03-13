@@ -9,10 +9,10 @@
 int main (void) {
   
   //Neuron neuron(3,0.5);
-  Dataset dataset("../dataset/nand");
+  Dataset dataset("../dataset/dummy");
   Tensor tensor = dataset.GetTensor();
-  ANN network(2,0.5,{3,3,2,7,6,1},tensor);
-  
+  ANN network(2,4,{2,2,1},tensor);
+  network.TrainANN(1);
   //network.TrainNeuron(9);
   /*network.Test({-1,-1,-1});
   network.Test({2,2,2});
