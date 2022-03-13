@@ -109,13 +109,20 @@ void Neuron::SetRandom(void) {
     for (int i = 0; i < size_; i++)
     {
       float currentRandomNumber = unif(rng);
-      //weight_[i] = currentRandomNumber;
-      weight_[i] = 0;
+      weight_[i] = currentRandomNumber;
+      //weight_[i] = 0;
     }
   }
 }
 
 void Neuron::Train(void) {
+  CalcSigma();
+  ActivationFunc();
+  CalcError();    
+  CalcCorrection();
+}
+
+void Neuron::TrainNeuron(void) {
   CalcSigma();
   ActivationFunc();
   CalcError();    

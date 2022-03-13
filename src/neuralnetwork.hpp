@@ -11,6 +11,7 @@ class ANN {
     ANN(Neuron, Tensor);
     ANN(int, float, std::vector<int>, Tensor); //Nº of inputs, threshold, layers
     ~ANN();
+    void TrainNeuron(int);
     void TrainANN(int);
     void Test(std::vector<float>);
 
@@ -18,6 +19,7 @@ class ANN {
 
     Neuron neuron_;
     Tensor tensor_;
+    std::vector<std::vector<Neuron*>> network_;
 
     void Plot(void);
 

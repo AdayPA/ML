@@ -15,9 +15,10 @@ class Neuron {
     void SetInput (std::vector<float>);
     void SetOutput (float);
     void PrintValues (void);
+    void TrainNeuron(void);
     void Train(void);
     int Test(void);
-
+    inline int GetSize(void) { return size_;};
 
   private:
 
