@@ -55,24 +55,24 @@ void Neuron::CalcSigma(void) {
   //sigma_ += bias_;
 }
 
-void Neuron::ActivationFunc (void){
+void Neuron::ActivationFunc (void) {
   if (sigma_ > threshold_) {
-    activation_ = 1;
+    result_ = 1;
   } else {
-    activation_ = 0;
+    result_ = 0;
   };
-  //printf("\nActivation: %i", activation_);
+  printf("\nActivation: %i", result_);
 }
 
 void Neuron::CalcError (void) {
   //printf("\nCalculo error: %f - %f",desired_output_, activation_);
-  error_ = desired_output_ - activation_;
-  //printf(" =  %f", error_);
+  error_ = desired_output_ - result_;
+  printf(" =  %f", error_);
 }
 
 void Neuron::CalcCorrection (void) {
   correction_ = learning_rate_ * error_;
-  //printf("\nCorreccion =  %f", correction_);
+  printf("\nCorreccion =  %f", correction_);
 }
 
 void Neuron::UpdateWeight(void) {
@@ -80,7 +80,7 @@ void Neuron::UpdateWeight(void) {
     weight_[i] +=  (input_[i] * correction_);
   }
    for (int i = 0; i < size_; i++) {
-    //std::cout << "\nPesos: " << weight_[i] << "";
+    std::cout << "\nPesos: " << weight_[i] << "";
   }
 }
 
@@ -90,7 +90,7 @@ void Neuron::PrintValues(void) {
   }
   printf("Sigma: %f\n", sigma_);
   printf("Desired output: %i\n", desired_output_);
-  printf("ActivationFunc: %i\n", activation_);
+  printf("ActivationFunc: %i\n", result_);
   printf("CalcError: %f\n", error_);
   printf("CalcCorrection: %f\n", correction_);
 }
@@ -110,7 +110,7 @@ void Neuron::SetRandom(void) {
     {
       float currentRandomNumber = unif(rng);
       //weight_[i] = currentRandomNumber;
-      weight_[i] = 1;
+      weight_[i] = 0;
     }
   }
 }
@@ -133,7 +133,7 @@ void Neuron::TrainNeuron(void) {
 int Neuron::Test(void) {
   CalcSigma();
   ActivationFunc();
-  return activation_;
+  return result_;
 }
 
 #endif

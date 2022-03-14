@@ -20,8 +20,10 @@ class ANN {
     Neuron neuron_;
     Tensor tensor_;
     std::vector<std::vector<Neuron*>> network_;
+    float cost_;
 
     void Plot(void);
+    void CalcCost(void);
 
 };
 

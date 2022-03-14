@@ -19,7 +19,7 @@ class Neuron {
     void Train(void);
     int Test(void);
     inline float GetSigma(void) { return sigma_;};
-
+    inline float GetResult(void) { return result_;};
   private:
 
     float threshold_;
@@ -29,8 +29,8 @@ class Neuron {
     float correction_;
     float learning_rate_;
     float desired_output_;
+    float result_;
     bool error_arguments_;
-    int activation_;
     int size_;
     std::vector<float> input_;
     std::vector<float> weight_;

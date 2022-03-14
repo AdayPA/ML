@@ -7,7 +7,7 @@ ANN::ANN(Neuron neuron, Tensor tensor) {
   neuron_ = neuron;
   tensor_ = tensor;
 }
-/*
+
 ANN::ANN(int input, float threshold, std::vector<int> network, Tensor tensor) {
   int inputs_neuron = 0;
   int temp_input_neuron = input;
@@ -26,10 +26,9 @@ ANN::ANN(int input, float threshold, std::vector<int> network, Tensor tensor) {
   //std::cout << a;
   //std::cout << network_.at(3).size() << std::endl;
   //std::cout << network_.size();
-}*/
-
-ANN::ANN(int input, float threshold, std::vector<int> network, Tensor tensor) {
 }
+
+
 
 ANN::~ANN() {}
 
@@ -50,7 +49,16 @@ void ANN::TrainANN(int batch) {
     temp_results = temp_next_results;
     temp_next_results.clear();
   }
+
+//CalcCost();
 }
+/*
+void ANN::CalcCost(void) {
+  std::cout << network_.back().size();
+  for (int i = 0; i < network_.back().size(); i++) {
+    //cost_ += (network_.at(network_.size() -1 ).at(i)->GetResult() - tensor_.output_) * ();
+  }
+}*/
 
 void ANN::TrainNeuron(int batch) {
   for (int i = 0; i < batch; i++) {
