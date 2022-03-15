@@ -35,6 +35,7 @@ ANN::~ANN() {}
 void ANN::TrainANN(int batch) {
   std::vector<float> temp_results;
   std::vector<float> temp_next_results;
+  int stage;
   for (int i = 0; i < network_.at(0).size(); i++) {
     network_.at(0).at(i)->SetInput(tensor_.input_[i]);
     network_.at(0).at(i)->Train();
@@ -50,15 +51,7 @@ void ANN::TrainANN(int batch) {
     temp_next_results.clear();
   }
 
-//CalcCost();
 }
-/*
-void ANN::CalcCost(void) {
-  std::cout << network_.back().size();
-  for (int i = 0; i < network_.back().size(); i++) {
-    //cost_ += (network_.at(network_.size() -1 ).at(i)->GetResult() - tensor_.output_) * ();
-  }
-}*/
 
 void ANN::TrainNeuron(int batch) {
   for (int i = 0; i < batch; i++) {
