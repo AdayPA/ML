@@ -13,12 +13,12 @@ int main (void) {
   //ANN network(2,4,{2,2,1},tensor);
   ANN network(neuron,tensor);
   network.TrainNeuron(9);
-  //network.Test({1,1.5,1.5});
+  network.Test({-2.0,-2.0,-2.0});
   /*network.Test({-1,-1,-1});
   network.Test({2,2,2});
   network.Test({2,3,3});
   network.Test({0.1,0.1,0.1});
   network.Test({2,5,5});*/
-  //system("start gnuplot -p gnuplot.txt");
+  system("start gnuplot -p gnuplot.txt");
   return 0;
 }
