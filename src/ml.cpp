@@ -26,6 +26,12 @@ int main (void) {
   network.Test({2,3,3});
   network.Test({0.1,0.1,0.1});
   network.Test({2,5,5});*/
-  //system("start gnuplot -p gnuplot.txt");
+  #ifdef __linux__ 
+    system("gnuplot -p gnuplot.txt");
+  #elif _WIN32
+    system("start gnuplot -p gnuplot.txt");
+  #else
+  #endif
+  
   return 0;
 }

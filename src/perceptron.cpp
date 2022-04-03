@@ -6,7 +6,7 @@
 #include <random>
 #include <chrono>
 
-#include "perceptron.hpp"
+#include "../lib/perceptron.hpp"
 
 Neuron::Neuron(){}
 

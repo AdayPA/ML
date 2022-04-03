@@ -1,7 +1,7 @@
 #ifndef ANN_CPP_
 #define ANN_CPP_
 
-#include "neuralnetwork.hpp"
+#include "../lib/neuralnetwork.hpp"
 
 ANN::ANN(Neuron neuron, Tensor tensor) {
   neuron_ = neuron;

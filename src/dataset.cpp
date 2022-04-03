@@ -1,7 +1,7 @@
 #ifndef DATASET_CPP_
 #define DATASET_CPP_
 
-#include "dataset.hpp"
+#include "../lib/dataset.hpp"
 
 #include <fstream>
 #include <iostream>
