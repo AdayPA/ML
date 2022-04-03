@@ -3,12 +3,19 @@
 #include "neuralnetwork.cpp"
 
 #include <fstream>
-#include <process.h>
+
+#ifdef __linux__ 
+    //linux code goes here
+#elif _WIN32
+    #include <process.h>
+#else
+#endif
+
 
 int main (void) {
   
   Neuron neuron(3,0.5);
-  Dataset dataset("../dataset/nand");
+  Dataset dataset("../dataset/or");
   Tensor tensor = dataset.GetTensor();
   //ANN network(2,4,{2,2,1},tensor);
   ANN network(neuron,tensor);
@@ -19,6 +26,6 @@ int main (void) {
   network.Test({2,3,3});
   network.Test({0.1,0.1,0.1});
   network.Test({2,5,5});*/
-  system("start gnuplot -p gnuplot.txt");
+  //system("start gnuplot -p gnuplot.txt");
   return 0;
 }
